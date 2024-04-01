@@ -146,6 +146,157 @@ class RoundNutObject(MujocoXMLObject):
         return dic
 
 
+class MouseObject(MujocoXMLObject):
+    """
+    Mouse object (used in Humanoid_hci)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/mouse.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class MonitorObject(MujocoXMLObject):
+    """
+    Monitor object (used in Humanoid_hci)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/monitor.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class ScreenObject(MujocoXMLObject):
+    """
+    Screen object (used in Humanoid_hci)
+    """
+
+    def __init__(self, name):
+        print("! into init screen")
+        super().__init__(
+            xml_path_completion("objects/screen.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class ToyBoatObject(MujocoXMLObject):
+    """
+    Toy-boat object (used in Humanoid_toy_assembly)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/toy-boat.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class CrateObject(MujocoXMLObject):
+    """
+    Crate object (used in Humanoid_toy_assembly)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/crate.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class IkeaBoxObject(MujocoXMLObject):
+    """
+    IkeaBox object (used in Humanoid_toy_assembly)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/ikea_box.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class BookObject(MujocoXMLObject):
+    """
+    Book object (used in Humanoid_return_book)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/book.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class BookshelfObject(MujocoXMLObject):
+    """
+    Bookshelf object (used in Humanoid_return_book)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/bookshelf.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class StorageBoxObject(MujocoXMLObject):
+    """
+    Storagebox object (used in Humanoid_return_book)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/storage_box.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class BasketObject(MujocoXMLObject):
+    """
+    Basket object (used in Humanoid_return_book)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/basket.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
 class MilkVisualObject(MujocoXMLObject):
     """
     Visual fiducial of milk carton (used in PickPlace).

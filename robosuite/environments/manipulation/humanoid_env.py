@@ -24,6 +24,23 @@ class HumanoidEnv(ManipulationEnv):
         if type(robots) is list:
             assert len(robots) == 1, "Error: Only one robot should be inputted for this task!"
 
+    def _setup_observables(self):
+        """
+        Sets up observables to be used for this environment. Loops through all robots and grabs their corresponding
+        observables to add to the procedurally generated dict of observables
+
+        Returns:
+            OrderedDict: Dictionary mapping observable names to its corresponding Observable object
+        """
+        observables = super()._setup_observables()
+        observables["robot0_joint_pos"]._active = True
+        # 'robot0_right_eef_pos', 'robot0_right_eef_quat', 'robot0_right_gripper_qpos', 'robot0_right_gripper_qvel', 'robot0_left_eef_pos', 'robot0_left_eef_quat', 'robot0_left_gripper_qpos', 'robot0_left_gripper_qvel'
+        observables["robot0_left_gripper_qpos"]._active = True
+        observables["robot0_right_gripper_qpos"]._active = True
+        observables["robot0_left_gripper_qvel"]._active = True
+        observables["robot0_right_gripper_qvel"]._active = True
+        return observables
+
     @property
     def _eef0_xpos(self):
         """

@@ -315,6 +315,9 @@ class OperationalSpaceController(Controller):
         position_error = desired_pos - self.ee_pos
         vel_pos_error = -self.ee_pos_vel
 
+        # if position_error[0] > 0.01:
+        # print("current hand pos=", self.ee_pos, "desired pos=", desired_pos)
+
         # F_r = kp * pos_err + kd * vel_err
         desired_force = np.multiply(np.array(position_error), np.array(self.kp[0:3])) + np.multiply(
             vel_pos_error, self.kd[0:3]
@@ -326,6 +329,12 @@ class OperationalSpaceController(Controller):
         desired_torque = np.multiply(np.array(ori_error), np.array(self.kp[3:6])) + np.multiply(
             vel_ori_error, self.kd[3:6]
         )
+        # self.mass_matrix[3, 3] += 5.0
+        # self.mass_matrix[4, 4] += 2.0
+        # self.mass_matrix[5, 5] += 2.0
+        # self.mass_matrix[6, 6] += 2.0
+
+        # print(np.round(np.array(self.mass_matrix), 2))
 
         # Compute nullspace matrix (I - Jbar * J) and lambda matrices ((J * M^-1 * J^T)^-1)
         lambda_full, lambda_pos, lambda_ori, nullspace_matrix = opspace_matrices(
@@ -343,6 +352,8 @@ class OperationalSpaceController(Controller):
 
         # Gamma (without null torques) = J^T * F + gravity compensations
         self.torques = np.dot(self.J_full.T, decoupled_wrench) + self.torque_compensation
+
+        # import pdb; pdb.set_trace()
 
         # Calculate and add nullspace torques (nullspace_matrix^T * Gamma_null) to final torques
         # Note: Gamma_null = desired nullspace pose torques, assumed to be positional joint control relative

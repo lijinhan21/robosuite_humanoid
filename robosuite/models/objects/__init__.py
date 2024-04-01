@@ -17,6 +17,16 @@ from .xml_objects import (
     CanVisualObject,
     PlateWithHoleObject,
     DoorObject,
+    MouseObject,
+    MonitorObject,
+    ToyBoatObject,
+    CrateObject,
+    BookObject,
+    BookshelfObject,
+    IkeaBoxObject,
+    ScreenObject,
+    StorageBoxObject,
+    BasketObject,
 )
 from .primitive import *
 from .composite import *

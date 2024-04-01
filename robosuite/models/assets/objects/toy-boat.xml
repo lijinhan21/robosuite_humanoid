@@ -1,0 +1,17 @@
+<mujoco model="toy-boat">
+  <asset>
+    <mesh file="meshes/toy-boat.obj" name="toy-boat_mesh" scale="0.15 0.15 0.15"/>
+    <texture file="../textures/toy-boat.png" name="tex-toy-boat" type="2d"/>
+    <material name="toy-boat" reflectance="0.5" texrepeat="1 1" texture="tex-toy-boat" texuniform="true"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom pos="0 0 0" quat="0.5 0.5 0.5 0.5" mesh="toy-boat_mesh" type="mesh" solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" material="toy-boat" group="0" condim="4"/>
+      </body>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.085" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.075" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.025 0.025 0" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

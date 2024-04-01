@@ -52,6 +52,29 @@ class GR1UpperBody(HumanoidUpperBodyModel):
             np.array: default initial qpos for the right, left arms
         """
         init_qpos = np.array([0.0] * 14)
+        init_qpos[0] = -0.5
+        init_qpos[2] = 1.57
+        init_qpos[7] = 0.5
+        init_qpos[9] = -1.57
+
+        init_qpos = np.array(
+            [
+                0.5753504639936845,
+                -1.2880741550806842,
+                -0.49831703339314676,
+                -0.44860417328978697,
+                -0.28278333799344413,
+                -0.25934162343941286,
+                -0.0699300618377962,
+                0.9012313467817487,
+                1.2331900425827245,
+                0.7956200444029548,
+                -0.6185976731583682,
+                -0.03100568565622645,
+                0.112091621446073,
+                0.04413014930725423,
+            ]
+        )
         return init_qpos
 
     @property
@@ -59,12 +82,12 @@ class GR1UpperBody(HumanoidUpperBodyModel):
         return {
             "bins": (-0.5, -0.1, 0),
             "empty": (-0.29, 0, 0),
-            "table": lambda table_length: (-0.26 - table_length / 2, 0, 0),
+            "table": lambda table_length: (-0.26 - table_length / 2 - 0.4, 0, 0),  # meaning: 0.26(+0.4m) behind table
         }
 
     @property
     def top_offset(self):
-        return np.array((0, 0, 1.0))
+        return np.array((0.0, 0, 1.0))
 
     @property
     def _horizontal_radius(self):

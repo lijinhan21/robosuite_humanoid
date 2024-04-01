@@ -13,7 +13,11 @@ class Manipulator(Robot):
     def control(self, action, policy_step=False):
         raise NotImplementedError
 
-    def grip_action(self, gripper, gripper_action):
+    def grip_action(
+        self,
+        gripper,
+        gripper_action,
+    ):
         """
         Executes @gripper_action for specified @gripper
 

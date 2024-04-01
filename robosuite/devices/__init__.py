@@ -1,5 +1,6 @@
 from .device import Device
 from .keyboard import Keyboard
+from .T265 import T265
 
 try:
     from .spacemouse import SpaceMouse

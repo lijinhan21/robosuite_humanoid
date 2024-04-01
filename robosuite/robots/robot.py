@@ -160,10 +160,8 @@ class Robot(object):
         self.robot_joints = self.robot_model.joints
         self._ref_joint_pos_indexes = [self.sim.model.get_joint_qpos_addr(x) for x in self.robot_joints]
         self._ref_joint_vel_indexes = [self.sim.model.get_joint_qvel_addr(x) for x in self.robot_joints]
-
         # indices for joint indexes
         self._ref_joint_indexes = [self.sim.model.joint_name2id(joint) for joint in self.robot_model.joints]
-
         # indices for joint pos actuation, joint vel actuation, gripper actuation
         self._ref_joint_actuator_indexes = [
             self.sim.model.actuator_name2id(actuator) for actuator in self.robot_model.actuators

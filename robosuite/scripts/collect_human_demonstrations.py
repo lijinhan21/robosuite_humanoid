@@ -59,6 +59,18 @@ def collect_human_trajectory(env, device, arm, env_configuration):
         if action is None:
             break
 
+        if env_configuration == "bimanual":
+            # action = np.concatenate([np.zeros_like(action), action])
+            action_r = action
+            action_l = action.copy()
+            for idx in [1, 3, 5]:
+                action_l[idx] *= -1
+
+            # action_l[3: 6] = 0
+            # action_r[3: 6] = 0
+            action = np.concatenate([action_r, action_l])
+            print("action=", action)
+
         # Run environment step
         env.step(action)
         env.render()
@@ -196,6 +208,13 @@ if __name__ == "__main__":
 
     # Get controller config
     controller_config = load_controller_config(default_controller=args.controller)
+    controller_config["controller_configs"] = load_controller_config(default_controller="OSC_POSE")
+    controller_config["controller_configs"]["input_max"] = [50] * 6
+    controller_config["controller_configs"]["input_min"] = [-50] * 6
+    controller_config["controller_configs"]["output_max"] = [50] * 6
+    controller_config["controller_configs"]["output_min"] = [-50] * 6
+    controller_config["controller_configs"]["kp"] = 5000
+    controller_config["controller_configs"]["control_delta"] = False  # True
 
     # Create argument configuration
     config = {

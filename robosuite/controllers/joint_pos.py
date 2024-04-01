@@ -241,6 +241,8 @@ class JointPositionController(Controller):
 
         # Return desired torques plus gravity compensations
         self.torques = np.dot(self.mass_matrix, desired_torque) + self.torque_compensation
+        # print("self.torques", self.torques)
+        # print("mass matrix", self.mass_matrix)
 
         # Always run superclass call for any cleanups at the end
         super().run_controller()

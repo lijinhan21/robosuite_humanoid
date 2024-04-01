@@ -13,6 +13,10 @@ from robosuite.environments.manipulation.two_arm_peg_in_hole import TwoArmPegInH
 from robosuite.environments.manipulation.two_arm_handover import TwoArmHandover
 from robosuite.environments.manipulation.two_arm_transport import TwoArmTransport
 from robosuite.environments.manipulation.humanoid_transport import HumanoidTransport
+from robosuite.environments.manipulation.humanoid_lift import HumanoidLift
+from robosuite.environments.manipulation.humanoid_hci import HumanoidHCI
+from robosuite.environments.manipulation.humanoid_toy_assembly import HumanoidToyAssembly
+from robosuite.environments.manipulation.humanoid_return_book import HumanoidReturnBook
 
 from robosuite.environments import ALL_ENVIRONMENTS
 from robosuite.controllers import ALL_CONTROLLERS, load_controller_config

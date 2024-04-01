@@ -148,7 +148,7 @@ class HumanoidTransport(HumanoidEnv):
         initialization_noise="default",
         tables_boundary=(0.8, 1.2, 0.05),
         table_friction=(1.0, 5e-3, 1e-4),
-        bin_size=(0.3, 0.3, 0.15),
+        bin_size=(0.3, 0.3, 0.05),
         use_camera_obs=True,
         use_object_obs=True,
         reward_scale=1.0,
@@ -181,7 +181,7 @@ class HumanoidTransport(HumanoidEnv):
         self.table_offsets[:, 0] = -0.075  # scale x offset
         self.table_offsets[0, 1] = self.tables_boundary[1] * -1 / 4  # scale y offset
         self.table_offsets[1, 1] = self.tables_boundary[1] * 1 / 4  # scale y offset
-        self.table_offsets[:, 2] = 0.83  # scale z offset
+        self.table_offsets[:, 2] = 0.86  # scale z offset
         self.bin_size = np.array(bin_size)
 
         # reward configuration
@@ -330,7 +330,7 @@ class HumanoidTransport(HumanoidEnv):
             handle_friction=4.0,
             head_density_ratio=1.5,
         )
-        trash = BoxObject(name="trash", size=[0.02, 0.02, 0.02], material=redwood)
+        trash = BoxObject(name="trash", size=[0.03, 0.03, 0.03], material=redwood)
         self.transport = TransportGroup(
             name="transport",
             payload=payload,
