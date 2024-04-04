@@ -104,9 +104,7 @@ if __name__ == "__main__":
         default=os.path.join(suite.models.assets_root, "demonstrations"),
     )
     parser.add_argument("--environment", type=str, default="HumanoidLift")
-    parser.add_argument(
-        "--robots", nargs="+", type=str, default="GR1UpperBody", help="Which robot(s) to use in the env"
-    )
+    parser.add_argument("--robots", nargs="+", type=str, default="GR1TwoArms", help="Which robot(s) to use in the env")
     parser.add_argument(
         "--config", type=str, default="bimanual", help="Specified environment configuration if necessary"
     )
@@ -169,9 +167,9 @@ if __name__ == "__main__":
     if args.device == "keyboard" or args.device == "spacemouse":
         from robosuite.devices import T265, Keyboard, SpaceMouse
 
-        device_l = SpaceMouse(pos_sensitivity=args.pos_sensitivity, rot_sensitivity=args.rot_sensitivity)
+        device_r = SpaceMouse(pos_sensitivity=args.pos_sensitivity, rot_sensitivity=args.rot_sensitivity)
         # device_l = T265(pos_sensitivity=args.pos_sensitivity, rot_sensitivity=args.rot_sensitivity)
-        device_r = Keyboard(pos_sensitivity=args.pos_sensitivity, rot_sensitivity=args.rot_sensitivity)
+        device_l = Keyboard(pos_sensitivity=args.pos_sensitivity * 10, rot_sensitivity=args.rot_sensitivity)
     else:
         raise Exception("Invalid device choice: choose either 'keyboard' or 'spacemouse'.")
 

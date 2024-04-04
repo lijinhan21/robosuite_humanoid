@@ -238,6 +238,7 @@ class Bimanual(Manipulator):
                 self._ref_gripper_joint_pos_indexes[arm] = [
                     self.sim.model.get_joint_qpos_addr(x) for x in self.gripper_joints[arm]
                 ]
+                # print("arm=", arm, self.gripper_joints[arm], self._ref_gripper_joint_pos_indexes[arm])
                 self._ref_gripper_joint_vel_indexes[arm] = [
                     self.sim.model.get_joint_qvel_addr(x) for x in self.gripper_joints[arm]
                 ]

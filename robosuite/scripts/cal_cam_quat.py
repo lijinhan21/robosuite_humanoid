@@ -50,6 +50,7 @@ def xyaxes2quat(xyaxes):
 # print(xyaxes2quat([-0.868, -0.496, -0.000, 0.192, -0.336, 0.922]))
 # print(xyaxes2quat([0.612, -0.791, 0.000, 0.374, 0.290, 0.881]))
 print(xyaxes2quat([-0.904, 0.427, 0.000, -0.266, -0.563, 0.783]))  # -0.904 0.427 0.000 -0.266 -0.563 0.783
+print(xyaxes2quat([0.602, -0.799, -0.000, 0.734, 0.553, 0.395]))
 
 # void mjuu_frame2quat(double* quat, const double* x, const double* y, const double* z) {
 #   const double* mat[3] = {x, y, z};  // mat[c][r] indexing

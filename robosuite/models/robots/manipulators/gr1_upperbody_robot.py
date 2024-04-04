@@ -49,32 +49,35 @@ class GR1UpperBody(HumanoidUpperBodyModel):
         Since this is bimanual robot, returns [right, left] array corresponding to respective values
 
         Returns:
-            np.array: default initial qpos for the right, left arms
+            np.array: default initial qpos for the right, left arms and torso
         """
-        init_qpos = np.array([0.0] * 14)
-        init_qpos[0] = -0.5
-        init_qpos[2] = 1.57
-        init_qpos[7] = 0.5
-        init_qpos[9] = -1.57
 
         init_qpos = np.array(
             [
-                0.5753504639936845,
-                -1.2880741550806842,
-                -0.49831703339314676,
-                -0.44860417328978697,
-                -0.28278333799344413,
-                -0.25934162343941286,
-                -0.0699300618377962,
-                0.9012313467817487,
-                1.2331900425827245,
-                0.7956200444029548,
-                -0.6185976731583682,
-                -0.03100568565622645,
-                0.112091621446073,
-                0.04413014930725423,
+                0.0014040807723666444,
+                0.0329435867253274,
+                -0.024655615771712422,
+                0.0,
+                0.0,
+                0.0,
+                0.7161998741312713,
+                1.210619552204434,
+                -0.6153317664476635,
+                -0.6177820316479151,
+                -0.23335661355637657,
+                -0.25603128456888447,
+                0.011129393205483024,
+                -0.6450654829774324,
+                -1.2630308009844142,
+                0.5779023301794867,
+                0.509870018771001,
+                0.11822843901171841,
+                -0.15207494115114661,
+                0.10339960954616242,
             ]
         )
+
+        init_qpos = np.array([0.0] * 20)
         return init_qpos
 
     @property
@@ -82,7 +85,7 @@ class GR1UpperBody(HumanoidUpperBodyModel):
         return {
             "bins": (-0.5, -0.1, 0),
             "empty": (-0.29, 0, 0),
-            "table": lambda table_length: (-0.26 - table_length / 2 - 0.4, 0, 0),  # meaning: 0.26(+0.4m) behind table
+            "table": lambda table_length: (-0.26 - table_length / 2 + 0.1, 0, 0),  # meaning: 0.26(+0.4m) behind table
         }
 
     @property

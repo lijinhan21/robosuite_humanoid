@@ -19,7 +19,9 @@ if __name__ == "__main__":
     # options["env_configuration"] = 'bimanual'
     # options["robots"] = "GR1"
 
-    options["env_name"] = "HumanoidReturnBook"  # "HumanoidHCI" #"HumanoidReturnBook" # #"HumanoidToyAssembly"
+    options[
+        "env_name"
+    ] = "HumanoidHandover"  # "HumanoidPour" #"HumanoidReturnBook"  # "HumanoidHCI" #"HumanoidReturnBook" # #"HumanoidToyAssembly"
     options["env_configuration"] = "bimanual"
     options["robots"] = "GR1UpperBody"
 
@@ -77,7 +79,13 @@ if __name__ == "__main__":
     fps = 25
     flag = 0
 
-    mujoco.viewer.launch(model=mjmodel, data=mjdata)
+    with mujoco.viewer.launch(model=mjmodel, data=mjdata) as viewer:
+        with viewer.lock():
+            viewer.opt.geomgroup[0] = 0
+            viewer.cam.azimuth = 180
+            viewer.cam.lookat = np.array([0.0, 0.0, 1.5])
+            viewer.cam.distance = 0.05
+            viewer.cam.elevation = -45
     exit()
 
     # for joint torque

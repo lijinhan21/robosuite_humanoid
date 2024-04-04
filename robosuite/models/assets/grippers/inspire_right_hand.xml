@@ -9,7 +9,7 @@
     </visual>
 
     <default>
-        <joint damping="1"/>
+        <joint damping="3"/>
         <muscle ctrllimited="true" ctrlrange="0 100"/>
         <motor ctrllimited="true" ctrlrange="-3 3" />
         <position ctrllimited="true" kp="10"/>
@@ -71,8 +71,8 @@
 
     </asset>
 
-    <worldbody>
-        <body name="right_hand" pos="0 0 0" quat="-0.5 -0.5 0.5 0.5">
+    <worldbody> 
+        <body name="right_hand" pos="0 0 0" quat="0.7071068 0.7071068 0 0">
         <!-- <body name="right_hand" pos="0.1 0 0" quat="0 0.707107 0 -0.707107"> -->
             <site name="ft_frame" pos="0 0 0" size="0.01 0.01 0.01" rgba="1 0 0 0" type="sphere" group="1"/>
             <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
@@ -100,14 +100,14 @@
                 <body name="r_thumb" pos="0. 0. 0.">
                     <!-- Thumb Proximal 1 -->
                     <body name="r_thumb_proximal_1" pos="-0.01496 -0.0375 -0.02045" quat="0.5 0.5 -0.5 0.5">
-                        <joint name="joint_r_thumb_proximal_1" type="hinge" pos="0 0 0" axis="0 0 -1" range="0 1.30" limited="true" damping="5"/>
+                        <joint name="joint_r_thumb_proximal_1" type="hinge" pos="0 0 0" axis="0 0 -1" range="0 1.30" limited="true" damping="3"/>
                         <!-- <site name="site_thumb_proximal_1" size="0.01" material="site_right_hand"/> -->
                         <geom name="r_thumb_proximal_vis" type="mesh" mesh="r_thumb_proximal_1_vis" material="r_thumb_material" group="1" contype="0" conaffinity="0"> </geom>
                         <geom name="r_thumb_proximal_col" type="mesh" mesh="r_thumb_proximal_1_col" mass="0.1" />
 
                         <!-- Thumb Proximal 2 -->
                         <body name="r_thumb_proximal_2" pos="-0.0088099 0.010892 -0.00925" quat="0.1 0.1 0.7 0.7">
-                            <joint name="joint_r_thumb_proximal_2" type="hinge" pos="0 0 0" axis="0 0 1" range="0 0.68" limited="true" damping="5" />
+                            <joint name="joint_r_thumb_proximal_2" type="hinge" pos="0 0 0" axis="0 0 1" range="0 0.68" limited="true" damping="3" />
                             <geom name="r_thumb_proximal_2_vis" type="mesh" mesh="r_thumb_proximal_2_vis" material="r_thumb_material" group="1" contype="0" conaffinity="0"> </geom>
                             <geom name="r_thumb_proximal_2_col" type="mesh" mesh="r_thumb_proximal_2_col" mass="0.1" />
 
@@ -115,14 +115,14 @@
 
                             <!-- Thumb Middle -->
                             <body name="r_thumb_middle" pos="0.04407 0.034553 -0.0008" quat="1 0 0 0">
-                                <joint name="joint_r_thumb_middle" type="hinge" pos="0 0 0" axis="0 0 1" range="0 0.68" limited="true" damping="5"/>
+                                <joint name="joint_r_thumb_middle" type="hinge" pos="0 0 0" axis="0 0 1" range="0 0.68" limited="true" damping="3"/>
                                 <geom name="r_thumb_middle_vis" type="mesh" mesh="r_thumb_middle_vis" material="r_thumb_material" group="1" contype="0" conaffinity="0"/>
                                 <geom name="r_thumb_middle_col" type="mesh" mesh="r_thumb_middle_col" mass="0.1" />
                                 <site name="site_r_thumb_middle" size="0.01" material="site_right_hand"/>
 
                                 <!-- Thumb Distal -->
                                 <body name="r_thumb_distal" pos="0.020248 0.010156 -0.0012" quat="1 0 0 0">
-                                    <joint name="joint_r_thumb_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 0.77" limited="true" damping="5"/>
+                                    <joint name="joint_r_thumb_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 0.77" limited="true" damping="3"/>
                                     <geom name="r_thumb_distal_vis" type="mesh" mesh="r_thumb_distal_vis" material="r_thumb_distal_material" group="1" contype="0" conaffinity="0"> </geom>
                                     <geom name="r_thumb_distal_col" type="mesh" mesh="r_thumb_distal_col" mass="0.1" />
                                     <site name="site_r_thumb_distal" size="0.01" material="site_right_hand"/>
@@ -141,13 +141,13 @@
                 <body name="r_index" pos="0 0 0">
                     <!-- Index Proximal -->
                     <body name="r_index_proximal" pos="0.0022853 -0.10493 -0.032268" quat="0.01745 -0.99985 0.0 0.0">
-                        <joint name="joint_r_index_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="5"/>
+                        <joint name="joint_r_index_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="3"/>
                         <site name="site_r_index_proximal" size="0.01" material="site_right_hand"/>
                         <geom name="r_index_proximal_vis" type="mesh" mesh="r_index_proximal_vis" material="r_index_material" group="1" contype="0" conaffinity="0"/>
                         <geom name="r_index_proximal_col" type="mesh" mesh="r_index_proximal_col" mass="0.1" />
                         <!-- Index Distal -->
                         <body name="r_index_distal" pos="-0.0026138 0.032026 -0.001" quat="1 0 0 0">
-                            <joint name="joint_r_index_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.82" limited="true" damping="5"/>
+                            <joint name="joint_r_index_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.82" limited="true" damping="3"/>
                             <site name="site_r_index_distal" size="0.01" material="site_right_hand"/>
                             <geom name="r_index_distal_vis" type="mesh" mesh="r_index_distal_vis" material="r_index_material" group="1" contype="0" conaffinity="0"/>
                             <geom name="r_index_distal_col" type="mesh" mesh="r_index_distal_col" mass="0.1" />
@@ -161,13 +161,13 @@
                 <body name="r_middle" pos="0 0 0">
                     <!-- Middle Proximal -->
                     <body name="r_middle_proximal" pos="0.0022853 -0.1055 -0.01295" quat="0 -1 0.0 0.0">
-                        <joint name="joint_r_middle_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="5"/>
+                        <joint name="joint_r_middle_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="3"/>
                         <site name="site_r_middle_proximal" size="0.01" material="site_right_hand"/>
                         <geom name="r_middle_proximal_vis" type="mesh" mesh="r_middle_proximal_vis" material="r_middle_material" group="1" contype="0" conaffinity="0"/>
                         <geom name="r_middle_proximal_col" type="mesh" mesh="r_middle_proximal_col" mass="0.1" />
                         <!-- Middle Distal -->
                         <body name="r_middle_distal" pos="-0.0024229 0.032041 -0.001" quat="1 0 0 0">
-                            <joint name="joint_r_middle_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.82" limited="true" damping="5"/>
+                            <joint name="joint_r_middle_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.82" limited="true" damping="3"/>
                             <site name="site_r_middle_distal" size="0.01" material="site_right_hand"/>
                             <geom name="r_middle_distal_vis" type="mesh" mesh="r_middle_distal_vis" material="r_middle_material" group="1" contype="0" conaffinity="0"/>
                             <geom name="r_middle_distal_col" type="mesh" mesh="r_middle_distal_col" mass="0.1" />
@@ -182,13 +182,13 @@
                 <body name="r_ring" pos="0 0 0">
                     <!-- Ring Proximal -->
                     <body name="r_ring_proximal" pos="0.0022853 -0.10531 0.0062872" quat="0.02619 0.99966 0.0 0.0">
-                        <joint name="joint_r_ring_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="5"/>
+                        <joint name="joint_r_ring_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="3"/>
                         <site name="site_r_ring_proximal" size="0.01" material="site_right_hand"/>
                         <geom name="r_ring_proximal_vis" type="mesh" mesh="r_ring_proximal_vis" material="r_ring_material" group="1" contype="0" conaffinity="0"/>
                         <geom name="r_ring_proximal_col" type="mesh" mesh="r_ring_proximal_col" mass="0.1" />
                         <!-- Ring Distal -->
                         <body name="r_ring_distal" pos="-0.0024229 0.032041 -0.001" quat="1 0 0 0">
-                            <joint name="joint_r_ring_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.75" limited="true" damping="5"/>
+                            <joint name="joint_r_ring_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.75" limited="true" damping="3"/>
                             <site name="site_r_ring_distal" size="0.01" material="site_right_hand"/>
                             <geom name="r_ring_distal_vis" type="mesh" mesh="r_ring_distal_vis" material="r_ring_material" group="1" contype="0" conaffinity="0"/>
                             <geom name="r_ring_distal_col" type="mesh" mesh="r_ring_distal_col" mass="0.1" />
@@ -203,13 +203,13 @@
                 <body name="r_pinky" pos="0 0 0">
                     <!-- Pinky Proximal -->
                     <body name="r_pinky_proximal" pos="0.0022853 -0.10411 0.025488" quat="0.05232 0.99863 0.0 0.0">
-                        <joint name="joint_r_pinky_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="5"/>
+                        <joint name="joint_r_pinky_proximal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.62" limited="true" damping="3"/>
                         <site name="site_r_pinky_proximal" size="0.01" material="site_right_hand"/>
                         <geom name="r_pinky_proximal_vis" type="mesh" mesh="r_pinky_proximal_vis" material="r_pinky_material" group="1" contype="0" conaffinity="0"/>
                         <geom name="r_pinky_proximal_col" type="mesh" mesh="r_pinky_proximal_col" mass="0.1" />
                         <!-- Pinky Distal -->
                         <body name="r_pinky_distal" pos="-0.0024229 0.032041 -0.001" quat="1 0 0 0">
-                            <joint name="joint_r_pinky_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.87" limited="true" damping="5"/>
+                            <joint name="joint_r_pinky_distal" type="hinge" pos="0 0 0" axis="0 0 1" range="0 1.87" limited="true" damping="3"/>
                             <site name="site_r_pinky_distal" size="0.01" material="site_right_hand"/>
                             <geom name="r_pinky_distal_vis" type="mesh" mesh="r_pinky_distal_vis" material="r_pinky_material" group="1" contype="0" conaffinity="0"/>
                             <geom name="r_pinky_distal_col" type="mesh" mesh="r_pinky_distal_col" mass="0.1" />

@@ -297,6 +297,67 @@ class BasketObject(MujocoXMLObject):
         )
 
 
+class White_Yellow_MugObject(MujocoXMLObject):
+    """
+    White yellow mug object (used in Humanoid_pour)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/white_yellow_mug.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class Red_Coffee_MugObject(MujocoXMLObject):
+    """
+    Red Coffee mug object (used in Humanoid_pour)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/red_coffee_mug.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
+class BallObject(MujocoXMLObject):
+    """
+    Ball object (used in Humanoid_pour)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/ball.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+            horizontal_radius=0.01,
+        )
+
+
+class WaterBallObject(MujocoXMLObject):
+    """
+    Ball object (used in Humanoid_pour)
+    """
+
+    def __init__(self, name):
+        super().__init__(
+            xml_path_completion("objects/water_ball.xml"),
+            name=name,
+            joints=[dict(type="free", damping="0.0005")],
+            obj_type="all",
+            duplicate_collision_geoms=True,
+        )
+
+
 class MilkVisualObject(MujocoXMLObject):
     """
     Visual fiducial of milk carton (used in PickPlace).

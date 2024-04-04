@@ -27,6 +27,10 @@ from .xml_objects import (
     ScreenObject,
     StorageBoxObject,
     BasketObject,
+    White_Yellow_MugObject,
+    Red_Coffee_MugObject,
+    BallObject,
+    WaterBallObject,
 )
 from .primitive import *
 from .composite import *
