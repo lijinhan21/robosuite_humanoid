@@ -5,7 +5,7 @@ import numpy as np
 import robosuite.utils.transform_utils as T
 from robosuite.environments.manipulation.humanoid_env import HumanoidEnv
 from robosuite.models.arenas import MultiTableArena, TableArena
-from robosuite.models.objects import BasketObject, BookObject, BottleObject, BreadVisualObject, CanObject
+from robosuite.models.objects import BasketObject, BookObject, BottleObject, BreadVisualObject, CanObject, HammerObject
 from robosuite.models.tasks import ManipulationTask
 from robosuite.utils.observables import Observable, sensor
 from robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
@@ -23,7 +23,7 @@ class HumanoidHandover(HumanoidEnv):  # TODO: check which env to inherit
         controller_configs=None,
         gripper_types="default",
         initialization_noise="default",
-        tables_boundary=(0.8, 1.2, 0.05),
+        tables_boundary=(0.7, 1.0, 0.05),
         table_friction=(1.0, 5e-3, 1e-4),
         use_camera_obs=True,
         use_object_obs=True,
@@ -139,7 +139,7 @@ class HumanoidHandover(HumanoidEnv):  # TODO: check which env to inherit
         print("here we set camera")
 
         # initialize objects of interest
-        self.bottle = BottleObject(name="bottle")  # BottleObject
+        self.bottle = BottleObject(name="bottle")
         self.basket = BasketObject(name="basket")
 
         # Create placement initializer
@@ -221,9 +221,17 @@ class HumanoidHandover(HumanoidEnv):  # TODO: check which env to inherit
             def bottle_quat(obs_cache):
                 return T.convert_quat(self.sim.data.body_xquat[self.bottle_body_id], to="xyzw")
 
+            @sensor(modality=modality)
+            def basket_pos(obs_cache):
+                return np.array(self.sim.data.body_xpos[self.basket_body_id])
+
+            @sensor(modality=modality)
+            def basket_quat(obs_cache):
+                return T.convert_quat(self.sim.data.body_xquat[self.basket_body_id], to="xyzw")
+
             # TODO: may need to add other observables if needed
 
-            sensors = [bottle_pos, bottle_quat]
+            sensors = [bottle_pos, bottle_quat, basket_pos, basket_quat]
             names = [s.__name__ for s in sensors]
 
             # Create observables
@@ -254,6 +262,9 @@ class HumanoidHandover(HumanoidEnv):  # TODO: check which env to inherit
 
     def _check_success(self):
         """
-        TODO: implement
+        success if the bottle is in the basket (determined by distance between the two objects' centers)
         """
-        return False
+        return (
+            np.linalg.norm(self.sim.data.body_xpos[self.bottle_body_id] - self.sim.data.body_xpos[self.basket_body_id])
+            < 0.08
+        )

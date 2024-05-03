@@ -255,12 +255,12 @@
 
 
     <actuator>
-        <motor joint="joint_r_thumb_proximal_1" ctrllimited="true" ctrlrange="-1 1" name="r_thumb_proximal_1_drive"/>
-        <motor joint="joint_r_thumb_proximal_2" ctrllimited="true" ctrlrange="-1 1" name="r_thumb_proximal_2_drive"/>
-        <motor joint="joint_r_index_proximal" ctrllimited="true" ctrlrange="-1 1" name="r_index_proximal_drive"/>
-        <motor joint="joint_r_middle_proximal" ctrllimited="true" ctrlrange="-1 1" name="r_middle_proximal_drive"/>
-        <motor joint="joint_r_ring_proximal" ctrllimited="true" ctrlrange="-1 1" name="r_ring_proximal_drive"/>
-        <motor joint="joint_r_pinky_proximal" ctrllimited="true" ctrlrange="-1 1" name="r_pinky_proximal_drive"/>
+        <motor joint="joint_r_thumb_proximal_1" ctrllimited="true" ctrlrange="-2 2" name="r_thumb_proximal_1_drive"/>
+        <motor joint="joint_r_thumb_proximal_2" ctrllimited="true" ctrlrange="-2 2" name="r_thumb_proximal_2_drive"/>
+        <motor joint="joint_r_index_proximal" ctrllimited="true" ctrlrange="-2 2" name="r_index_proximal_drive"/>
+        <motor joint="joint_r_middle_proximal" ctrllimited="true" ctrlrange="-2 2" name="r_middle_proximal_drive"/>
+        <motor joint="joint_r_ring_proximal" ctrllimited="true" ctrlrange="-2 2" name="r_ring_proximal_drive"/>
+        <motor joint="joint_r_pinky_proximal" ctrllimited="true" ctrlrange="-2 2" name="r_pinky_proximal_drive"/>
 
 
         <!-- <position joint="joint_r_thumb_proximal_1" name="thumb_proximal_1_drive" ctrlrange="0 1.3"/>

@@ -115,10 +115,11 @@ if __name__ == "__main__":
     env = suite.make(
         **config,
         has_renderer=True,
-        has_offscreen_renderer=False,
+        has_offscreen_renderer=True,
         ignore_done=True,
-        use_camera_obs=False,
+        use_camera_obs=True,
         control_freq=20,
+        camera_names=["frontview", "agentview"],
     )
     obs = env.reset()
 
@@ -131,6 +132,8 @@ if __name__ == "__main__":
     for i in range(len(raw_data)):
         replay_data.append(calculate_target_qpos(raw_data[i]))
     print(len(replay_data), len(raw_data), raw_data.shape)
+
+    writer = cv2.VideoWriter(f"tmp_video/adjust_.mp4", cv2.VideoWriter_fourcc(*"mp4v"), 20, (1080, 1080))
 
     fps = 20
     with mujoco.viewer.launch_passive(
@@ -164,6 +167,11 @@ if __name__ == "__main__":
             cur_step = int(idx) % cycle_len
             idx += 1
 
+            # geom_id = env.sim.model.geom_name2id("robot0_left_wrist_target")
+            # print("geom_id", geom_id, env.sim.data.geom_xpos[geom_id])
+            # env.sim.data.geom_xpos[geom_id][1] = idx * 0.05
+            # # env.sim.step()
+
             if args.interpolation == "linear":
                 target_joints = linear_interpolation(last_target, next_target, cur_step, cycle_len)
             elif args.interpolation == "cosine":
@@ -185,6 +193,14 @@ if __name__ == "__main__":
             action[3:6] = np.clip(0.1 * (target_joints[3:6] - obs["robot0_joint_pos"][3:6]), -0.0, 0.0)
 
             obs, reward, done, _ = env.step(action)
+            # print("obs keys", obs.keys())
+            # print(obs["frontview_image"].shape)
+
+            # save image
+            img = obs["frontview_image"]
+            img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+            cv2.imshow("image", img)
+            cv2.waitKey(1)
 
             actuator_idxs = [0, 1, 4, 6, 8, 10]
             saved_data.append(

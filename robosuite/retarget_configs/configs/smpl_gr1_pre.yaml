@@ -1,0 +1,164 @@
+GR1_body:
+  _target_: retarget.robot.Robot
+  auto_clip: True
+  robot_description:
+    REPOSITORY_PATH: assets
+    PACKAGE_PATH: assets/gr1
+    URDF_PATH: assets/gr1/urdf/gr1_dex.urdf
+  # fixed_joints: ["joint_waist_yaw", "joint_waist_pitch", "joint_waist_roll"]
+  fixed_joints: []
+
+  pre_processor:
+    _target_: retarget.pre_processer.smpl_gr1.SMPLGR1Preprocessor
+
+  solver:
+    _target_: retarget.solver.IKSolver
+    dt: 0.01
+    num_step_per_frame: 100
+    # tasks and costs
+    posture_cost: 0.1
+    link_costs:
+      link_LArm2:
+        orientation_cost: 0.0
+        position_cost: 0.
+      link_RArm2:
+        orientation_cost: 0.0
+        position_cost: 0.
+      link_LArm7:
+        orientation_cost: 1.0
+        position_cost: 1.0
+      link_RArm7:
+        orientation_cost: 1.0
+        position_cost: 1.0
+      link_LArm4:
+        orientation_cost: 0.0
+        position_cost: 0.
+      link_RArm4:
+        orientation_cost: 0.0
+        position_cost: 0.
+
+  post_filters:
+    - joint_position_filter:
+      _target_: retarget.filter.JointPositionFilter
+      history_size: 10
+      smoothing_strength: 0.2
+      outlier_threshold: 0.8
+      speed_limit: 0.2
+      joint_size: 56
+      verbose: False
+      joint_mask:
+        [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+        ]
+
+GR1_left_hand:
+  _target_: retarget.robot.Robot
+  auto_clip: True
+  robot_description:
+    REPOSITORY_PATH: assets
+    PACKAGE_PATH: assets/gr1
+    URDF_PATH: assets/gr1/handleft01151/urdf/handleft01151_renamed.urdf
+
+  pre_processor:
+    _target_: retarget.pre_processer.smpl_gr1.SMPLGR1HandHybridPreProcessor
+    side: left
+
+  solver:
+    _target_: retarget.solver.SMPLHybridSolver
+    # for IK solver
+    dt: 0.01
+    num_step_per_frame: 20
+    amplify_factor: 50.0
+    posture_cost: 0.0
+    link_costs:
+      link_LArm10:
+        orientation_cost: 0.0
+        position_cost: 1.0
+      link_LArm14:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+      link_LArm17:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+      link_LArm20:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+      link_LArm23:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+    # for angle solver
+    x_plane_idx: [0, 1, 4, 7, 10]
+    z_plane_idx: [[0, 2], [3, 5], [9, 11], [6, 8]]
+    thumb_idx: [12, 14]
+
+  post_filters:
+    - angle_discretizer:
+      _target_: retarget.filter.GR1AngleDiscretizer
+      num_bins: 3
+
+GR1_right_hand:
+  _target_: retarget.robot.Robot
+  auto_clip: True
+  robot_description:
+    REPOSITORY_PATH: assets
+    PACKAGE_PATH: assets/gr1
+    URDF_PATH: assets/gr1/handright01091/urdf/handright01091_renamed.urdf
+
+  pre_processor:
+    _target_: retarget.pre_processer.smpl_gr1.SMPLGR1HandHybridPreProcessor
+    side: right
+
+  solver:
+    _target_: retarget.solver.SMPLHybridSolver
+    dt: 0.01
+    num_step_per_frame: 20
+    amplify_factor: 50.0
+    posture_cost: 0.0
+    link_costs:
+      link_RArm10:
+        orientation_cost: 0.0
+        position_cost: 1.0
+      link_RArm14:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+      link_RArm17:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+      link_RArm20:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+      link_RArm23:
+        orientation_cost: 0.0
+        position_cost: [1.0, 0.0, 1.0]
+    # for angle solver
+    x_plane_idx: [0, 1, 4, 7, 10]
+    z_plane_idx: [[0, 2], [3, 5], [9, 11], [6, 8]]
+    thumb_idx: [12, 14]
+
+  post_filters:
+    - angle_discretizer:
+      _target_: retarget.filter.GR1AngleDiscretizer
+      num_bins: 3

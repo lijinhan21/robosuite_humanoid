@@ -356,7 +356,7 @@ class CameraMover:
         mocap.set("pos", camera.get("pos"))
         mocap.set("quat", camera.get("quat"))
         new_camera = ET.SubElement(mocap, "camera")
-        new_camera.set("mode", "fixed")
+        # new_camera.set("mode", "fixed")
         new_camera.set("name", camera.get("name"))
         new_camera.set("pos", "0 0 0")
 

@@ -19,6 +19,7 @@ from robosuite.environments.manipulation.humanoid_toy_assembly import HumanoidTo
 from robosuite.environments.manipulation.humanoid_return_book import HumanoidReturnBook
 from robosuite.environments.manipulation.humanoid_pour import HumanoidPour
 from robosuite.environments.manipulation.humanoid_handover import HumanoidHandover
+from robosuite.environments.manipulation.humanoid_simple import HumanoidSimple
 
 from robosuite.environments import ALL_ENVIRONMENTS
 from robosuite.controllers import ALL_CONTROLLERS, load_controller_config

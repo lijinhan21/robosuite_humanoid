@@ -115,3 +115,10 @@ mjkey.txt
 
 # private macros
 macros_private.py
+
+# videos and extra package
+*mp4
+robosuite/tmp_video
+robosuite/grasp_video
+robosuite/GR1_retarget_pre
+*.pkl

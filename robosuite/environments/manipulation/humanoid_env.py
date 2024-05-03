@@ -39,6 +39,8 @@ class HumanoidEnv(ManipulationEnv):
         observables["robot0_right_gripper_qpos"]._active = True
         observables["robot0_left_gripper_qvel"]._active = True
         observables["robot0_right_gripper_qvel"]._active = True
+        observables["robot0_left_eef_pos"]._active = True
+        observables["robot0_right_eef_pos"]._active = True
         return observables
 
     @property

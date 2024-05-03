@@ -146,7 +146,7 @@ class HumanoidTransport(HumanoidEnv):
         controller_configs=None,
         gripper_types="default",
         initialization_noise="default",
-        tables_boundary=(0.8, 1.2, 0.05),
+        tables_boundary=(0.7, 1.2, 0.05),
         table_friction=(1.0, 5e-3, 1e-4),
         bin_size=(0.3, 0.3, 0.05),
         use_camera_obs=True,
